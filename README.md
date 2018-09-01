@@ -52,3 +52,15 @@ curl -X POST http://localhost:9000/actuator/refresh
 
 http://localhost:9000/actuator/hystrix.stream
 
+## Zipkin Server
+
+2.0 开始不建议内建 server 了
+
+```
+curl -sSL https://zipkin.io/quickstart.sh | bash -s
+java -jar zipkin.jar
+```
+
+version 2.11.4, 35m 左右
+
+访问 http://localhost:9411

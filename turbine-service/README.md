@@ -31,3 +31,29 @@ turbine.app-config=demo-service,demo-client
 turbine.cluster-name-expression='default'
 ```
 监控路径：http://localhost:7099/turbine.stream 即可
+
+## 注册到 Consul
+
+注意 Turbine 的 starter 依赖于一个 Eureka Client 的 starter，会导致切换到 Consul 后，启动时有个找不到 Eureka 的报错，
+根据[官网的描述](https://github.com/spring-cloud/spring-cloud-consul/issues/53)，改依赖应该在 B 版本已经被去掉了，并且应该用不是 starter 的依赖：
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-netflix-turbine</artifactId>
+</dependency>
+```
+另：官网 Turbine 和 Consul 的[说明](https://github.com/spring-cloud/spring-cloud-consul/blob/master/docs/src/main/asciidoc/spring-cloud-consul.adoc#circuit-breaker-with-hystrix)
+
+也可能是个新的 bug，可以简单去掉依赖解决
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```

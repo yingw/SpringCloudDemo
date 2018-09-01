@@ -79,9 +79,10 @@ public class DemoComsumerApplication {
     }
 */
 
-    @FeignClient(name = "zuul-gateway", fallback = HelloServiceFallback.class)
+    // Gateway 方式，设置 zuul-gateway /demo-producer
+    @FeignClient(name = "demo-producer", fallback = HelloServiceFallback.class)
     interface HelloService {
-        @GetMapping("/demo-producer")
+        @GetMapping("/")
         String hello(@RequestParam("name") String name);
     }
 

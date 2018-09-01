@@ -152,14 +152,24 @@ eureka.client.service-url.default-zone=http://localhost:8761/eureka
 ### Consul
 
 ```xml
-
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-consul-discovery-client</artifactId>
 </dependency>
 ```
 
+```properties
+spring.cloud.consul.host=127.0.0.1
+spring.cloud.consul.port=8500
+spring.cloud.consul.discovery.prefer-ip-address=true
+spring.cloud.consul.discovery.ip-address=127.0.0.1
+```
 
+>如果用了虚拟机 Consul 还要打通网络，改用 hostname 注册，且在虚拟机中加 host `echo '10.0.75.1 SHH-IT-CB002CL' >> /etc/hosts`
+```
+spring.cloud.consul.discovery.prefer-ip-address=false
+spring.cloud.consul.discovery.hostname=SHH-IT-CB002CL
+```
 
 
 ### 客户端配置
