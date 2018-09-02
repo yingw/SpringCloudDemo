@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -43,29 +45,26 @@ public class DemoComsumerApplication {
 */
 
 /*
+*/
     @Autowired LoadBalancerClient loadBalancerClient;
     @Autowired DiscoveryClient discoveryClient;
-*/
 
     /**
      * 获取所有服务
      */
-/*
     @RequestMapping("/services")
     public Object services() {
-        return discoveryClient.getInstances("demo-service");
+        return discoveryClient.getInstances("demo-producer");
     }
-*/
 
     /**
      * 从所有服务中选择一个服务（轮询）
      */
-/*
     @RequestMapping("/discover")
     public Object discover() {
-        return loadBalancerClient.choose("demo-service").getUri().toString();
+        return loadBalancerClient.choose("demo-producer").getUri().toString();
     }
-*/
+
     @HystrixCommand
     @RequestMapping("/")
     public String helloClient() {

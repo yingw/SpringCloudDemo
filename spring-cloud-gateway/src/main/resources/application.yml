@@ -1,0 +1,36 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: baidu
+        uri: http://baidu.com
+        predicates:
+        - Path=/baidu/**
+      - id: google
+        uri: http://google.com
+        predicates:
+        - Path=/google/**
+      - id: cnbeta
+        uri: http://www.cnbeta.com
+        predicates:
+        - Path=/cnbeta/**
+      - id: dm5
+        uri: http://www.dm5.com
+        predicates:
+        - Path=/dm5/**
+      - id: cxytiandi
+        uri: http://www.cxytiandi.com
+        predicates:
+        - Path=/cxytiandi/**
+      - id: producer
+        uri: http://localhost:9000
+        predicates:
+        - Path=/producer/**
+      - id: cousumer
+        uri: lb:demo-consumer
+        predicates:
+        - Path=/cousumer/**
+#logging:
+#  level:
+#   - root: debug
+#     cn.yinguowei: debug

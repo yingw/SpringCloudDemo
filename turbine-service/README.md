@@ -41,6 +41,10 @@ turbine.cluster-name-expression='default'
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-netflix-turbine</artifactId>
 </dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+</dependency>
 ```
 另：官网 Turbine 和 Consul 的[说明](https://github.com/spring-cloud/spring-cloud-consul/blob/master/docs/src/main/asciidoc/spring-cloud-consul.adoc#circuit-breaker-with-hystrix)
 

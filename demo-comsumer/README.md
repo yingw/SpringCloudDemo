@@ -14,6 +14,12 @@
 - Thymeleaf
 - Zipkin Client
 
+
+三种调用服务的方式
+1. Feign
+2. RestTemplate
+3. DiscoveryClient
+
 ## RestTemplate
 定义 RestTemplate
 ```java
